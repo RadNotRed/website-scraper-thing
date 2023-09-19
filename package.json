@@ -1,9 +1,13 @@
 {
   "name": "website-scraper-thing",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A web scraper tool??",
   "private": true,
+  "author": "RadNotRed",
+  "license": "MIT",
   "scripts": {
-    "start": "node ./bin/www"
+    "build": "tsc",
+    "start": "node ./dist/scraper.js"
   },
   "dependencies": {
     "@types/cheerio": "^0.22.32",
