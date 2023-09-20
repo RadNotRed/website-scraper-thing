@@ -12,16 +12,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors());
 
 app.get('/scrape', async (req, res) => {
-    const { url, element } = req.query;
+    const {url, element} = req.query;
 
-    if (!url || !element) {
-        return res.status(400).send('URL or element selector missing');
+    if (!url) {
+        return res.status(400).send('URL is missing');
     }
 
     try {
         const html = await rp(url as string);
         const $ = cheerio.load(html);
-        const content = $(element as string).html();
+        const content = $(element as string).length ? $(element as string).html() : html;
+
 
         res.json({
             content,
